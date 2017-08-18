@@ -32,7 +32,7 @@ export default Mixin.create({
 
   handleResponse(_, headers) {
     runNext(this, function() {
-      this.set('newVersionDetector.activeVersion', headers['X-Current-Version']);
+      this.set('newVersionDetector.activeVersion', headers['X-Current-Version'] || headers['x-current-version'] || headers['X-CURRENT-VERSION']);
     });
 
     return this._super(...arguments);
